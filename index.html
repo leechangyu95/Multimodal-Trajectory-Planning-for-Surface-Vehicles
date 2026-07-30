@@ -79,6 +79,22 @@ td.l,th.l{text-align:left}
 footer{margin-top:52px;padding:24px 0 38px;border-top:1px solid var(--line);
   text-align:center;color:var(--faint);font-size:14px}
 hr.sep{border:0;border-top:1px solid var(--line);margin:38px auto;max-width:900px}
+
+/* ---------- clip playback ---------- */
+.clipwrap{position:relative;display:block;line-height:0}
+.clipwrap>img{width:100%;height:auto;display:block}
+.clipwrap .replay{
+  position:absolute;right:12px;bottom:12px;
+  display:none;align-items:center;gap:7px;
+  padding:7px 14px;border:0;border-radius:999px;cursor:pointer;
+  background:rgba(16,20,24,.82);color:#fff;
+  font:600 13px/1 "Segoe UI",system-ui,sans-serif;letter-spacing:.2px;
+  backdrop-filter:blur(2px);transition:background .15s ease;
+}
+.clipwrap .replay:hover{background:rgba(11,99,196,.95)}
+.clipwrap .replay svg{width:13px;height:13px;fill:currentColor}
+.clipwrap.done .replay{display:inline-flex}
+.clipwrap.done>img{filter:saturate(.92) brightness(.97)}
 </style>
 </head>
 <body>
@@ -110,20 +126,20 @@ hr.sep{border:0;border-top:1px solid var(--line);margin:38px auto;max-width:900p
     <div class="vid fail">
       <span class="tag">Baseline A &mdash; safety-zone breach at t = 297 s</span>
       <img class="lazyanim" src="static/videos/v10_D2t8_ed_poster.jpg"
-           data-anim="static/videos/v10_D2t8_ed.webp" alt="Baseline A at density 1">
+           data-anim="static/videos/v10_D2t8_ed.webp" data-dur="3300" alt="Baseline A at density 1">
       <div class="sub">Distance-based avoidance with no committed passing side. Stopped by the opening encounter group.</div>
     </div>
     <div class="vid fail">
       <span class="tag">Baseline B &mdash; safety-zone breach at t = 341 s</span>
       <img class="lazyanim" src="static/videos/v10_D2t8_tc1_poster.jpg"
-           data-anim="static/videos/v10_D2t8_tc1.webp" alt="Baseline B at density 1">
+           data-anim="static/videos/v10_D2t8_tc1.webp" data-dur="3700" alt="Baseline B at density 1">
       <div class="sub">Single committed passing side per ship. The commitment is invalidated and no alternative
       remains.</div>
     </div>
     <div class="vid best">
       <span class="tag">Proposed &mdash; completes the route</span>
       <img class="lazyanim" src="static/videos/v10_D2t8_mm16_poster.jpg"
-           data-anim="static/videos/v10_D2t8_mm16.webp" alt="Proposed method at density 1">
+           data-anim="static/videos/v10_D2t8_mm16.webp" data-dur="39200" alt="Proposed method at density 1">
       <div class="sub">Clears the same group and finishes in 4607 s, changing its committed avoidance route 8 times.
       Worst-case clearance 60 m beyond the combined safety radius.</div>
     </div>
@@ -134,19 +150,19 @@ hr.sep{border:0;border-top:1px solid var(--line);margin:38px auto;max-width:900p
     <div class="vid fail">
       <span class="tag">Baseline A &mdash; safety-zone breach at t = 327 s</span>
       <img class="lazyanim" src="static/videos/v10_D3t0_ed_poster.jpg"
-           data-anim="static/videos/v10_D3t0_ed.webp" alt="Baseline A at density 2">
+           data-anim="static/videos/v10_D3t0_ed.webp" data-dur="3600" alt="Baseline A at density 2">
       <div class="sub">Same failure mode, one density level up.</div>
     </div>
     <div class="vid fail">
       <span class="tag">Baseline B &mdash; safety-zone breach at t = 315 s</span>
       <img class="lazyanim" src="static/videos/v10_D3t0_tc1_poster.jpg"
-           data-anim="static/videos/v10_D3t0_tc1.webp" alt="Baseline B at density 2">
+           data-anim="static/videos/v10_D3t0_tc1.webp" data-dur="3500" alt="Baseline B at density 2">
       <div class="sub">The prescribed side reverses as a ship crosses the bow line.</div>
     </div>
     <div class="vid best">
       <span class="tag">Proposed &mdash; completes the route</span>
       <img class="lazyanim" src="static/videos/v10_D3t0_mm16_poster.jpg"
-           data-anim="static/videos/v10_D3t0_mm16.webp" alt="Proposed method at density 2">
+           data-anim="static/videos/v10_D3t0_mm16.webp" data-dur="42500" alt="Proposed method at density 2">
       <div class="sub">Finishes in 4996 s, changing its committed avoidance route 17 times. Worst-case clearance 82 m.</div>
     </div>
   </div>
@@ -156,19 +172,19 @@ hr.sep{border:0;border-top:1px solid var(--line);margin:38px auto;max-width:900p
     <div class="vid fail">
       <span class="tag">Baseline A &mdash; safety-zone breach at t = 437 s</span>
       <img class="lazyanim" src="static/videos/v10_D4t1_ed_poster.jpg"
-           data-anim="static/videos/v10_D4t1_ed.webp" alt="Baseline A at density 3">
+           data-anim="static/videos/v10_D4t1_ed.webp" data-dur="4500" alt="Baseline A at density 3">
       <div class="sub">Densest level. The opening group is not resolvable without a committed side.</div>
     </div>
     <div class="vid fail">
       <span class="tag">Baseline B &mdash; safety-zone breach at t = 406 s</span>
       <img class="lazyanim" src="static/videos/v10_D4t1_tc1_poster.jpg"
-           data-anim="static/videos/v10_D4t1_tc1.webp" alt="Baseline B at density 3">
+           data-anim="static/videos/v10_D4t1_tc1.webp" data-dur="4200" alt="Baseline B at density 3">
       <div class="sub">A single committed side is not enough when several ships are decision-relevant at once.</div>
     </div>
     <div class="vid best">
       <span class="tag">Proposed &mdash; completes the route</span>
       <img class="lazyanim" src="static/videos/v10_D4t1_mm16_poster.jpg"
-           data-anim="static/videos/v10_D4t1_mm16.webp" alt="Proposed method at density 3">
+           data-anim="static/videos/v10_D4t1_mm16.webp" data-dur="41000" alt="Proposed method at density 3">
       <div class="sub">Finishes in 4814 s under sustained congestion, changing its committed avoidance route 26 times.
       Worst-case clearance 92 m.</div>
     </div>
@@ -234,25 +250,79 @@ hr.sep{border:0;border-top:1px solid var(--line);margin:38px auto;max-width:900p
 </footer>
 
 <script>
-/* Swap poster JPGs for animated WebPs when they scroll into view. */
+/* Clips play once and stop on the last frame; a Replay button restarts them.
+   The animation is fetched once and kept as a Blob: each replay mints a fresh
+   object URL, which restarts the WebP from frame 0 without re-downloading. */
 (function () {
-  var imgs = document.querySelectorAll('img.lazyanim');
+  var ICON = '<svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7a6 6 0 1 1-6 6H4a8 8 0 1 0 8-8z"/></svg>';
+  var clips = Array.prototype.slice.call(document.querySelectorAll('img.lazyanim'));
+  var canBlob = (typeof fetch === 'function') && (typeof URL !== 'undefined') &&
+                 URL.createObjectURL;
+
+  clips.forEach(function (im) {
+    var animUrl = im.getAttribute('data-anim');
+    var dur = parseInt(im.getAttribute('data-dur') || '0', 10);
+
+    /* Schematic animations carry no duration: they are meant to loop, so they
+       keep the plain swap-on-scroll behaviour and get no Replay button. */
+    if (dur <= 0) {
+      im._start = function () { im.src = animUrl; };
+      return;
+    }
+
+    var wrap = document.createElement('span');
+    wrap.className = 'clipwrap';
+    im.parentNode.insertBefore(wrap, im);
+    wrap.appendChild(im);
+
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'replay';
+    btn.innerHTML = ICON + '<span>Replay</span>';
+    btn.setAttribute('aria-label', 'Replay this clip');
+    wrap.appendChild(btn);
+
+    var blob = null, objUrl = null, timer = null, busy = false;
+
+    function markDone() { wrap.classList.add('done'); }
+
+    function play() {
+      if (timer) { clearTimeout(timer); timer = null; }
+      wrap.classList.remove('done');
+      if (blob) {
+        if (objUrl) URL.revokeObjectURL(objUrl);
+        objUrl = URL.createObjectURL(blob);
+        im.src = objUrl;
+      } else {
+        /* no Blob support: cache-busting reload is the only way to restart */
+        im.src = animUrl + (animUrl.indexOf('?') < 0 ? '?r=' : '&r=') + Date.now();
+      }
+      timer = setTimeout(markDone, dur + 300);
+    }
+
+    function load(then) {
+      if (blob || busy) { then && then(); return; }
+      if (!canBlob) { then && then(); return; }
+      busy = true;
+      fetch(animUrl).then(function (r) { return r.blob(); })
+        .then(function (b) { blob = b; busy = false; then && then(); })
+        .catch(function () { busy = false; then && then(); });
+    }
+
+    btn.addEventListener('click', function () { load(play); });
+    im._start = function () { load(play); };
+  });
+
   if (!('IntersectionObserver' in window)) {
-    Array.prototype.forEach.call(imgs, function (im) { im.src = im.dataset.anim; });
+    clips.forEach(function (im) { im._start(); });
     return;
   }
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
-      if (e.isIntersecting) {
-        var im = e.target;
-        io.unobserve(im);
-        var pre = new Image();
-        pre.onload = function () { im.src = pre.src; };
-        pre.src = im.dataset.anim;
-      }
+      if (e.isIntersecting) { io.unobserve(e.target); e.target._start(); }
     });
   }, { rootMargin: '200px 0px' });
-  Array.prototype.forEach.call(imgs, function (im) { io.observe(im); });
+  clips.forEach(function (im) { io.observe(im); });
 })();
 </script>
 </body>
