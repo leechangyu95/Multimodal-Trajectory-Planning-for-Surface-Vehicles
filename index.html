@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supplementary video results &mdash; multimodal trajectory planning for surface vehicles</title>
+<meta name="description" content="Supplementary closed-loop simulation videos for a manuscript under review: three planners on identical maritime traffic at three densities.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+:root{
+  --ink:#1c2430; --muted:#5b6472; --faint:#8b93a1;
+  --accent:#0b63c4; --accent-ink:#084b96;
+  --bg:#ffffff; --panel:#f5f7fa; --line:#e3e7ee;
+  --good:#0a7d4f; --bad:#b3403a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  color:var(--ink);background:var(--bg);
+  line-height:1.65;font-size:17px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+.wide{max-width:1180px;margin:0 auto;padding:0 20px}
+
+header{padding:54px 0 6px;text-align:center}
+h1{font-size:clamp(23px,3.4vw,32px);line-height:1.25;font-weight:700;letter-spacing:-.4px}
+h1 .thin{font-weight:400;color:var(--muted)}
+.badge{
+  display:inline-block;margin-top:16px;padding:5px 16px;border-radius:999px;
+  background:#fff4d6;border:1px solid #f0d9a0;color:#8a6100;
+  font-size:14px;font-weight:600;letter-spacing:.2px;
+}
+.note{margin-top:14px;color:var(--muted);font-size:15.5px}
+
+section{padding:34px 0 8px}
+h2{font-size:24px;letter-spacing:-.3px;margin-bottom:6px;text-align:center}
+h3{font-size:19px;margin:26px 0 4px;color:var(--accent-ink);text-align:center}
+p{margin:10px 0;color:var(--ink)}
+p.lead{color:var(--muted);text-align:center;max-width:860px;margin:6px auto 0}
+
+.vidgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:16px 0 4px}
+@media(max-width:960px){.vidgrid{grid-template-columns:1fr}}
+.vid{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px}
+.vid img{width:100%;height:auto;border-radius:8px;display:block}
+.vid .tag{
+  display:inline-block;margin-bottom:8px;font-size:13px;font-weight:600;
+  border-radius:999px;padding:3px 12px;background:#e8edf5;color:var(--muted);
+}
+.vid.best .tag{background:var(--accent);color:#fff}
+.vid.fail .tag{background:#f3e3e2;color:var(--bad)}
+.vid .sub{font-size:13.5px;color:var(--muted);margin-top:8px;line-height:1.5}
+.playnote{text-align:center;font-size:13px;color:var(--faint);margin-top:2px}
+
+figure{margin:22px 0;text-align:center}
+figure img{max-width:100%;height:auto;border-radius:10px}
+figcaption{font-size:14.5px;color:var(--muted);margin-top:10px;text-align:justify}
+figcaption b{color:var(--ink)}
+
+.tbl-scroll{overflow-x:auto;margin:18px 0}
+table{border-collapse:collapse;margin:0 auto;font-size:15.5px;min-width:520px}
+caption{caption-side:top;font-size:14.5px;color:var(--muted);padding-bottom:10px;text-align:center}
+th,td{padding:8px 16px;text-align:center;border-bottom:1px solid var(--line)}
+thead th{border-bottom:2px solid var(--ink);font-size:14.5px}
+tbody tr.win{background:#eef5ee}
+tbody tr.win td{font-weight:600}
+td.l,th.l{text-align:left}
+.good{color:var(--good);font-weight:600}
+
+.legend{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:16px 22px;margin:22px auto 0;max-width:860px;font-size:14.5px;color:var(--muted);
+}
+.legend b{color:var(--ink)}
+.legend ul{margin:8px 0 0 20px}
+.legend li{margin:4px 0}
+
+footer{margin-top:52px;padding:24px 0 38px;border-top:1px solid var(--line);
+  text-align:center;color:var(--faint);font-size:14px}
+hr.sep{border:0;border-top:1px solid var(--line);margin:38px auto;max-width:900px}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="wrap">
+  <h1>Multimodal Trajectory Planning for Surface Vehicles<br>
+  <span class="thin">Supplementary video results</span></h1>
+
+  <div class="badge">Supplementary material for a manuscript under review</div>
+
+  <p class="note">This page hosts the closed-loop simulation videos that accompany the results section of the
+  manuscript. It contains results only. No description of the method is given here; please refer to the
+  submitted manuscript.</p>
+</header>
+
+<hr class="sep">
+
+<!-- ================= PAIRED COMPARISONS ================= -->
+<section class="wide" id="paired">
+  <h2>Three planners, identical traffic, three densities</h2>
+  <p class="lead">Each row is one paired realization of the benchmark. All three planners face
+  <b>byte-identical traffic</b> and perceive the same six nearest ships; the compared configurations differ only in
+  how the avoidance side of each ship is determined. Playback is accelerated; the badge in the upper-left of each
+  clip reports the measured per-period computation time.</p>
+
+  <h3>Density&nbsp;1 &mdash; 8 dynamic + 3 static obstacles</h3>
+  <div class="vidgrid">
+    <div class="vid fail">
+      <span class="tag">Baseline A &mdash; safety-zone breach at t = 297 s</span>
+      <img class="lazyanim" src="static/videos/v10_D2t8_ed_poster.jpg"
+           data-anim="static/videos/v10_D2t8_ed.webp" alt="Baseline A at density 1">
+      <div class="sub">Distance-based avoidance with no committed passing side. Stopped by the opening encounter group.</div>
+    </div>
+    <div class="vid fail">
+      <span class="tag">Baseline B &mdash; safety-zone breach at t = 341 s</span>
+      <img class="lazyanim" src="static/videos/v10_D2t8_tc1_poster.jpg"
+           data-anim="static/videos/v10_D2t8_tc1.webp" alt="Baseline B at density 1">
+      <div class="sub">Single committed passing side per ship. The commitment is invalidated and no alternative
+      remains.</div>
+    </div>
+    <div class="vid best">
+      <span class="tag">Proposed &mdash; completes the route</span>
+      <img class="lazyanim" src="static/videos/v10_D2t8_mm16_poster.jpg"
+           data-anim="static/videos/v10_D2t8_mm16.webp" alt="Proposed method at density 1">
+      <div class="sub">Clears the same group and finishes in 4607 s, changing its committed avoidance route 8 times.
+      Worst-case clearance 60 m beyond the combined safety radius.</div>
+    </div>
+  </div>
+
+  <h3>Density&nbsp;2 &mdash; 12 dynamic + 4 static obstacles</h3>
+  <div class="vidgrid">
+    <div class="vid fail">
+      <span class="tag">Baseline A &mdash; safety-zone breach at t = 327 s</span>
+      <img class="lazyanim" src="static/videos/v10_D3t0_ed_poster.jpg"
+           data-anim="static/videos/v10_D3t0_ed.webp" alt="Baseline A at density 2">
+      <div class="sub">Same failure mode, one density level up.</div>
+    </div>
+    <div class="vid fail">
+      <span class="tag">Baseline B &mdash; safety-zone breach at t = 315 s</span>
+      <img class="lazyanim" src="static/videos/v10_D3t0_tc1_poster.jpg"
+           data-anim="static/videos/v10_D3t0_tc1.webp" alt="Baseline B at density 2">
+      <div class="sub">The prescribed side reverses as a ship crosses the bow line.</div>
+    </div>
+    <div class="vid best">
+      <span class="tag">Proposed &mdash; completes the route</span>
+      <img class="lazyanim" src="static/videos/v10_D3t0_mm16_poster.jpg"
+           data-anim="static/videos/v10_D3t0_mm16.webp" alt="Proposed method at density 2">
+      <div class="sub">Finishes in 4996 s, changing its committed avoidance route 17 times. Worst-case clearance 82 m.</div>
+    </div>
+  </div>
+
+  <h3>Density&nbsp;3 &mdash; 16 dynamic + 5 static obstacles</h3>
+  <div class="vidgrid">
+    <div class="vid fail">
+      <span class="tag">Baseline A &mdash; safety-zone breach at t = 437 s</span>
+      <img class="lazyanim" src="static/videos/v10_D4t1_ed_poster.jpg"
+           data-anim="static/videos/v10_D4t1_ed.webp" alt="Baseline A at density 3">
+      <div class="sub">Densest level. The opening group is not resolvable without a committed side.</div>
+    </div>
+    <div class="vid fail">
+      <span class="tag">Baseline B &mdash; safety-zone breach at t = 406 s</span>
+      <img class="lazyanim" src="static/videos/v10_D4t1_tc1_poster.jpg"
+           data-anim="static/videos/v10_D4t1_tc1.webp" alt="Baseline B at density 3">
+      <div class="sub">A single committed side is not enough when several ships are decision-relevant at once.</div>
+    </div>
+    <div class="vid best">
+      <span class="tag">Proposed &mdash; completes the route</span>
+      <img class="lazyanim" src="static/videos/v10_D4t1_mm16_poster.jpg"
+           data-anim="static/videos/v10_D4t1_mm16.webp" alt="Proposed method at density 3">
+      <div class="sub">Finishes in 4814 s under sustained congestion, changing its committed avoidance route 26 times.
+      Worst-case clearance 92 m.</div>
+    </div>
+  </div>
+  <div class="playnote">Clips start automatically as they scroll into view.</div>
+
+  <div class="legend">
+    <b>How to read the clips.</b>
+    <ul>
+      <li>The heavy dark line is the executed trajectory of the own ship; ship glyphs are drawn with time-faded
+      afterimages so the history of each encounter stays visible.</li>
+      <li>Thin light lines, shown only for the proposed method, are the alternative trajectories held open at
+      that instant. The one being executed is drawn in red.</li>
+      <li>Dashed circles are the combined keep-out radii; a red cross marks the instant a safety zone is
+      breached.</li>
+      <li>The dashed polyline is the planned waypoint route, fixed and identical in every run.</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ================= AGGREGATE ================= -->
+<section class="wrap" id="aggregate">
+  <h2>Aggregate outcome of the benchmark</h2>
+  <p class="lead">The clips above are single realizations. For context, the paired Monte Carlo statistics
+  reported in the manuscript are reproduced below, over 100 trials per cell.</p>
+
+  <div class="tbl-scroll">
+    <table>
+      <caption>Success / safety-violation rates in %, and the median depth by which a violating trial penetrates
+      the safety zone. The remainder of each cell are timeouts.</caption>
+      <thead>
+        <tr><th class="l" rowspan="2">Configuration</th>
+            <th colspan="2">Density 1</th>
+            <th colspan="2">Density 2</th>
+            <th colspan="2">Density 3</th></tr>
+        <tr><th><small>suc./viol.</small></th><th><small>depth [m]</small></th>
+            <th><small>suc./viol.</small></th><th><small>depth [m]</small></th>
+            <th><small>suc./viol.</small></th><th><small>depth [m]</small></th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="l">Baseline A</td><td>40 / 60</td><td>250</td><td>31 / 69</td><td>229</td>
+            <td>20 / 80</td><td>266</td></tr>
+        <tr><td class="l">Baseline B</td><td>76 / 24</td><td>608</td><td>77 / 23</td><td>646</td>
+            <td>65 / 31</td><td>598</td></tr>
+        <tr class="win"><td class="l">Proposed</td><td class="good">99 / 1</td><td class="good">219</td>
+            <td class="good">97 / 3</td><td class="good">127</td>
+            <td class="good">86 / 10</td><td class="good">19</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="lead">A breach is an infringement of a virtual keep-out disk of roughly one kilometre, not a hull
+  contact, so each trial is simulated to the end of the route even after the zone is first entered. That leaves
+  the success statistics unchanged and additionally records how far each configuration cuts into the zone.</p>
+</section>
+
+<footer>
+  <div class="wrap">
+    Supplementary results page for a manuscript under review. Static site, no tracking.
+  </div>
+</footer>
+
+<script>
+/* Swap poster JPGs for animated WebPs when they scroll into view. */
+(function () {
+  var imgs = document.querySelectorAll('img.lazyanim');
+  if (!('IntersectionObserver' in window)) {
+    Array.prototype.forEach.call(imgs, function (im) { im.src = im.dataset.anim; });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        var im = e.target;
+        io.unobserve(im);
+        var pre = new Image();
+        pre.onload = function () { im.src = pre.src; };
+        pre.src = im.dataset.anim;
+      }
+    });
+  }, { rootMargin: '200px 0px' });
+  Array.prototype.forEach.call(imgs, function (im) { io.observe(im); });
+})();
+</script>
+</body>
+</html>
