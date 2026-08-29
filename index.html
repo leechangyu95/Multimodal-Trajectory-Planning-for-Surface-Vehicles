@@ -55,6 +55,7 @@ p.lead{color:var(--muted);text-align:center;max-width:860px;margin:6px auto 0}
 
 figure{margin:22px 0;text-align:center}
 figure img{max-width:100%;height:auto;border-radius:10px}
+figure.framed img{border:1px solid var(--line);background:#fff;padding:8px}
 figcaption{font-size:14.5px;color:var(--muted);margin-top:10px;text-align:justify}
 figcaption b{color:var(--ink)}
 
@@ -98,10 +99,53 @@ hr.sep{border:0;border-top:1px solid var(--line);margin:38px auto;max-width:900p
 
   <div class="badge">Supplementary material for a manuscript under review</div>
 
-  <p class="note">This page hosts the closed-loop simulation videos that accompany the results section of the
-  manuscript. It contains results only. No description of the method is given here; please refer to the
-  submitted manuscript.</p>
+  <p class="note">This page hosts three schematic animations of the method, followed by the closed-loop
+  simulation videos that accompany the results section. For the full method, please refer to the submitted
+  manuscript.</p>
 </header>
+
+<hr class="sep">
+
+<!-- ================= METHOD SCHEMATICS ================= -->
+<section class="wrap" id="schematics">
+  <h2>Three schematic animations of the method</h2>
+  <p class="lead">Each clip isolates one idea: a barrier that commits an avoidance side, an enumeration of
+  all side combinations, and a parallel batch that solves them at once.</p>
+
+  <h3>1&nbsp;&middot;&nbsp;One constraint, two committed sides: LTC-CBF and RTC-CBF</h3>
+  <figure class="framed">
+    <img class="lazyanim" src="static/videos/anim_sides_poster.jpg"
+         data-anim="static/videos/anim_sides.webp"
+         alt="Left and right turning-circle CBF commitments around one obstacle">
+    <figcaption>The turning-circle CBF keeps the escape turning circle on the committed side clear of the
+    obstacle. A single discrete parameter &sigma; selects the right circle (RTC, &sigma; = +1) or the left
+    circle (LTC, &sigma; = &minus;1); flipping it mirrors the maneuver, and both sides rejoin the nominal
+    path after the pass.</figcaption>
+  </figure>
+
+  <h3>2&nbsp;&middot;&nbsp;Two obstacles &rarr; four modes</h3>
+  <figure class="framed">
+    <img class="lazyanim" src="static/videos/anim_modes_poster.jpg"
+         data-anim="static/videos/anim_modes.webp"
+         alt="Four homotopy modes around two obstacles">
+    <figcaption>Each obstacle can be passed left or right, giving K = 2&sup2; = 4 topologies
+    (L&middot;L, L&middot;R, R&middot;L, R&middot;R). A gradient planner is trapped in its starting class;
+    the multimodal planner solves all four at every step and commits by cost. For N branching obstacles
+    this is K = 2<sup>N</sup>; the ship results below use N = 4, K = 16.</figcaption>
+  </figure>
+
+  <h3>3&nbsp;&middot;&nbsp;All modes at once: one OpenMP batch</h3>
+  <figure class="framed">
+    <img class="lazyanim" src="static/videos/anim_parallel_poster.jpg"
+         data-anim="static/videos/anim_parallel.webp"
+         alt="Sequential versus OpenMP-batched solving of the 16 mode problems">
+    <figcaption>The K mode-problems differ only in their &sigma; vector, so they share dimensions and
+    solver structure and can be batched. An OpenMP-parallelized batch (acados/HPIPM) solves them
+    simultaneously and commits the arg-min mode. At K = 16 this is 1.4&nbsp;ms batched versus
+    8.2&nbsp;ms sequential, well inside the 1&nbsp;s replanning budget.</figcaption>
+  </figure>
+  <div class="playnote">Schematics loop; the closed-loop clips below play once.</div>
+</section>
 
 <hr class="sep">
 
